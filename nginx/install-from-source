@@ -2,4 +2,14 @@
 
 Installing NGINX Dependencies:
 
-PCRE: 
+# PCRE: 
+1. $ wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz
+2. $ tar -xzf pcre2-10.42.tar.gz
+3. $ cd pcre2-10.42
+4. mkdir -p /opt/nginx-1.23.1
+5. ./configure --prefix=/opt/nginx-1.23.1/pcre
+6. make
+7. make install
+
+
+
