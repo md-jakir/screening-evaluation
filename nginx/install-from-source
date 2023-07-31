@@ -48,9 +48,6 @@ Installing NGINX Dependencies:
 9. $ ps aux |grep nginx
 10. $ URL: http://www.example.com
 
-# Load Balancer Configuration file:
-
-
 
 
 
