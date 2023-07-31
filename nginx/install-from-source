@@ -3,20 +3,47 @@
 Installing NGINX Dependencies:
 
 # PCRE: 
-1. $ wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz
-2. $ tar -xzf pcre2-10.42.tar.gz
-3. $ cd pcre2-10.42
-4. mkdir -p /opt/nginx-1.23.1
-5. ./configure --prefix=/opt/nginx-1.23.1/pcre
-6. make
-7. make install
+1. $ mkdir -p /opt/nginx-1.23.1
+2. $ cd /opt/nginx-1.23.1
+3. $ wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz
+4. $ tar -xzf pcre2-10.42.tar.gz
+5. $ cd pcre2-10.42
+6. $ ./configure --prefix=/opt/nginx-1.23.1/pcre
+7. $ make
+8. $ make install
 
 # zlib:
-1. wget http://zlib.net/zlib-1.2.13.tar.gz
-2. tar -xzf zlib-1.2.13.tar.gz
-3. cd zlib-1.2.13
-4. ./configure --prefix=/opt/nginx1.23.1/zlib
-5. make
-6. make install
+1. $ cd /opt/nginx-1.23.1
+2. $ wget http://zlib.net/zlib-1.2.13.tar.gz
+3. $ tar -xzf zlib-1.2.13.tar.gz
+4. $ cd zlib-1.2.13
+5. $ ./configure --prefix=/opt/nginx1.23.1/zlib
+6. $ make
+7. $ make install
+
+# openssl-1.1.1t
+1. $ mkdir -p /opt/openssl
+2. $ cd /opt/openssl
+3. $ wget http://www.openssl.org/source/openssl-1.1.1t.tar.gz
+4. $ tar zxf openssl-1.1.1t.tar.gz
+5. $ cd openssl-1.1.1t 
+6. $ ./Configure linux-x86_64 --prefix=/opt/openssl (For Ubuntu 22.04, architecture is linux-x86_64)
+7. In the User's .bashrc file:
+    $ OPENSSL_PATH=/opt/openssl/bin/
+    $ export PATH=$PATH:$OPENSSL_PATH
+    $ export LD_LIBRARY_PATH=/opt/openssl/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+    $ source ~/.bashrc
 
 
+# Compile Nginx-1.23.1
+
+1. $ wget https://nginx.org/download/nginx-1.23.1.tar.gz
+2. $ tar zxf nginx-1.23.1.tar.gz
+3. $ cd nginx-1.23.1
+4. $  ./configure --prefix=/opt/nginx1.23.1/nginx --sbin-path=/opt/nginx1.23.1/nginx --conf-path=/opt/nginx1.23.1/nginx/nginx.conf --pid-path=/opt/nginx1.23.1/nginx/nginx.pid --with-pcre=../pcre2-10.42 --with-zlib=../zlib-1.2.13 --with-http_ssl_module --with-openssl=/opt/openssl/openssl-1.1.1t --with-stream=dynamic --http-log-path=/opt/nginx1.23.1/logs/access.log --error-log-path=/opt/nginx1.23.1/logs/error.log --modules-path=/opt/nginx1.23.1/nginx/modules --with-http_v2_module
+5. $ make 
+6. $ make install
+7. $ cd /opt/nginx1.23.1/nginx
+8. $ ./nginx (enter)
+9. $ ps aux |grep nginx
+10. $ URL: http://www.example.com
