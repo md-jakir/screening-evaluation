@@ -1,3 +1,3 @@
 # screening-evaluation
 
-<img width="348" alt="Screenshot 2023-07-31 204603" src="https://github.com/md-jakir/screening-evaluation/assets/25055579/10eaf536-4f8f-4759-b59d-c90ca2c89f80">
+<img width="461" alt="Screenshot 2023-08-02 195446" src="https://github.com/md-jakir/screening-evaluation/assets/25055579/a1cfb10d-3789-47f7-bb95-407356263ce8">
